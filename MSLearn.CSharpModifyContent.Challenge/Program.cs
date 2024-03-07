@@ -12,6 +12,8 @@ Quantity: 5000
 Output: <h2>Widgets &reg;</h2><span>5000</span>
 */
 
+using System.Diagnostics;
+
 const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
 
 string quantity = "";
@@ -58,6 +60,9 @@ for (int i = 0; i< currentTag.Length; i++)
         output = output.Remove(currentTagIndex, currentTag[i].Length);
     }
 }
+
+// Replace the HTML character ™ (&trade;) with ® (&reg;) in the output variable.
+output = "Output: " + output.Replace("&trade;", "&reg;");
 
 Console.WriteLine(quantity);
 Console.WriteLine(output);
