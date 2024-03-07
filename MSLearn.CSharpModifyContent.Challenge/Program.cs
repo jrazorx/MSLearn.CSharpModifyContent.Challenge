@@ -43,6 +43,21 @@ if (openingTagIndex != -1)
         quantity = "Quantity: " + input.Substring(openingTagIndex + currentTagLengths[0], closingTagIndex - (openingTagIndex + currentTagLengths[0]));
 }
 
+// Set the output variable to the value of input, then remove the <div> and </div> tags.
+// Initialization
+currentTag = divTag;
+output = input;
+
+// Suppression du premier <div> et du premier </div> rencontrés
+for (int i = 0; i< currentTag.Length; i++)
+{
+    int currentTagIndex = output.IndexOf(currentTag[i]);
+    if (currentTagIndex != -1)
+    {
+        currentTagLengths[i] = currentTag[i].Length;
+        output = output.Remove(currentTagIndex, currentTag[i].Length);
+    }
+}
 
 Console.WriteLine(quantity);
 Console.WriteLine(output);
